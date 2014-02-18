@@ -1,0 +1,35 @@
+{
+  "name": "jstransformify",
+  "version": "0.0.0",
+  "description": "Browserify transform which applies jstransform visitors",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andreypopp/jstransformify"
+  },
+  "keywords": [
+    "browserify-transform",
+    "jstransform"
+  ],
+  "author": "Andrey Popp <8mayday@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreypopp/jstransformify/issues"
+  },
+  "homepage": "https://github.com/andreypopp/jstransformify",
+  "dependencies": {
+    "through": "~2.3.4",
+    "jstransform": "~3.0.0",
+    "resolve": "~0.6.1",
+    "convert-source-map": "~0.3.3"
+  },
+  "devDependencies": {
+    "semver": "~2.2.1",
+    "mocha": "~1.17.1",
+    "jshint": "~2.4.3",
+    "browserify": "~3.30.1"
+  }
+}
