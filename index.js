@@ -37,6 +37,8 @@ function jstransformify(filename, opts) {
         });
 
         var map = sourceMap.fromJSON(r.sourceMap);
+        map.sourcemap.file = filename;
+        map.sourcemap.sources = [filename];
         map.sourcemap.sourcesContent = [src];
 
         this.queue(r.code + '\n' + map.toComment());
