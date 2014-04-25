@@ -1,6 +1,6 @@
 {
   "name": "jstransformify",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Browserify transform which applies jstransform visitors",
   "main": "index.js",
   "scripts": {
