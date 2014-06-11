@@ -12,6 +12,10 @@ function jstransformify(filename, opts) {
   var src = '';
   var visitorList = [];
 
+  if (/\.json$/.test(filename)) {
+    return through();
+  }
+
   [].concat(opts.v).concat(opts.visitors).filter(Boolean).forEach(function(v) {
     if (isString(v)) {
       var basedir = path.dirname(filename);
