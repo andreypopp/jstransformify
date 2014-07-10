@@ -22,7 +22,7 @@
   "homepage": "https://github.com/andreypopp/jstransformify",
   "dependencies": {
     "through": "~2.3.4",
-    "jstransform": "~4.0.0",
+    "jstransform": "~6.0.0",
     "resolve": "~0.6.1",
     "convert-source-map": "~0.3.3"
   },
