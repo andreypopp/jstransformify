@@ -27,7 +27,6 @@
     "convert-source-map": "~0.3.3"
   },
   "devDependencies": {
-    "semver": "~2.2.1",
     "mocha": "~1.17.1",
     "jshint": "~2.4.3",
     "browserify": "~4.2.0"
