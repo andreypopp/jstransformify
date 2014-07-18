@@ -1,10 +1,10 @@
-# jstranformify
+# jstransformify
 
 Browserify transform which applies jstransform visitors.
 
 ## Installation
 
-    % npm install jstranformify
+    % npm install jstransformify
 
 ## Usage
 
