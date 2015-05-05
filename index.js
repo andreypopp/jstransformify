@@ -2,8 +2,7 @@
 
 var path        = require('path');
 var sourceMap   = require('convert-source-map');
-var jstransform = require('jstransform');
-var resolve     = require('resolve/lib/sync');
+var jstransform = require('jstransform/simple');
 var through     = require('through');
 
 var cache = {};
@@ -16,41 +15,28 @@ function jstransformify(filename, opts) {
     return through();
   }
 
-  [].concat(opts.v).concat(opts.visitors).filter(Boolean).forEach(function(v) {
-    if (isString(v)) {
-      var basedir = path.dirname(filename);
-      var cached = cache[basedir + ':' + v];
-      if (!cached) {
-        var required = require(resolve(v, {basedir: basedir})).visitorList;
-        cached = cache[basedir + ':' + v] = required;
-      }
-      v = cached;
-    } else if (v.visitorList) {
-      v = v.visitorList;
-    }
-    visitorList = visitorList.concat(v);
-  });
-
   return through(
     function(c) { src += c; },
     function() {
       try {
-        var r = jstransform.transform(visitorList, src, {
-          sourceMap: true,
-          filename: filename
-        });
-
-        var map = sourceMap.fromJSON(r.sourceMap);
-        map.sourcemap.file = filename;
-        map.sourcemap.sources = [filename];
-        map.sourcemap.sourcesContent = [src];
-
-        this.queue(r.code + '\n' + map.toComment());
+        var r = jstransform.transform(src, getTransformOptions(opts, filename));
+        this.queue(r.code);
         this.queue(null);
       } catch (err) {
         this.emit('error', 'while transforming ' + filename + ':' + err);
       }
     });
+}
+
+function getTransformOptions(options, filename) {
+  var out = {
+    sourceMap: true,
+    sourceFilename: filename
+  };
+  for (var k in options) {
+    out[k] = options[k];
+  }
+  return out;
 }
 
 function isString(o) {
