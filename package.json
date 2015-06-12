@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/andreypopp/jstransformify",
   "dependencies": {
-    "convert-source-map": "^0.4.1",
     "jstransform": "^11.0.1",
     "resolve": "^1.0.0",
     "through": "^2.3.6"

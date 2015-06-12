@@ -1,15 +1,10 @@
 'use strict';
 
-var path        = require('path');
-var sourceMap   = require('convert-source-map');
 var jstransform = require('jstransform/simple');
 var through     = require('through');
 
-var cache = {};
-
 function jstransformify(filename, opts) {
   var src = '';
-  var visitorList = [];
 
   if (/\.json$/.test(filename)) {
     return through();
@@ -37,10 +32,6 @@ function getTransformOptions(options, filename) {
     out[k] = options[k];
   }
   return out;
-}
-
-function isString(o) {
-  return Object.prototype.toString.call(o) === '[object String]';
 }
 
 module.exports = jstransformify;
