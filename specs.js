@@ -7,7 +7,7 @@ describe('jstransformify', function() {
 
   it('works', function(done) {
     browserify('./fixture')
-      .transform({visitors: 'jstransform/visitors/es6-class-visitors'}, jstransformify)
+      .transform({es6: true}, jstransformify)
       .bundle(function(err, code) {
         if (err) return done(err);
         assert.ok(code);
