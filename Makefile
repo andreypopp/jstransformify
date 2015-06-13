@@ -1,5 +1,4 @@
 BIN = ./node_modules/.bin
-PATH := $(BIN):$(PATH)
 
 install link:
 	@npm $@
@@ -8,10 +7,10 @@ example::
 	$(MAKE) -C example/ assets.json start
 
 lint:
-	@jshint index.js
+	@$(BIN)/jshint index.js
 
 test::
-	@mocha -t 5000 -b -R spec specs.js
+	@$(BIN)/mocha -t 5000 -b -R spec specs.js
 
 release-patch: test lint
 	@$(call release,patch)
